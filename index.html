@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Планиметрия — Вариант 4</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/my.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown data-menu-title="Титульный слайд">
+                <script type="text/template">
+                    # Планиметрия 
+                    Студент: Ирина Емельянова
+                    
+                    Группа: ПМИ
+
+                    
+
+                    
+
+
+                </script>
+            </section>
+
+            <section data-markdown data-menu-title="Определения" class="section-divider">
+                <script type="text/template">
+                    Определения
+                    -----------
+                </script>
+            </section>
+
+            <section data-markdown data-menu-title="Что такое Планиметрия" class="intro-slide">
+                <script type="text/template">
+                    ### Что такое Планиметрия
+
+                    Планиметрия — это раздел геометрии, который изучает фигуры на плоскости (двумерные объекты): точки, прямые, углы, треугольники, окружности, многоугольники и их свойства (площади, углы, длины).
+                </script>
+            </section>
+
+            <section data-markdown data-menu-title="Основные геометрические фигуры" class="intro-slide">
+                <script type="text/template">
+                    ### Основные геометрические фигуры
+
+В планиметрии изучают фигуры, которые полностью умещаются на одной плоскости.
+Вот главные из них:
+Круг — все точки на одинаковом расстоянии от центра. Ни углов, ни сторон.
+Квадрат — четыре равные стороны, четыре прямых угла.
+Треугольник — три стороны, три угла. Их сумма всегда 180°.
+Параллелограмм — противоположные стороны параллельны и равны.
+Трапеция — только две стороны параллельны, их называют основаниями.
+Ромб — все стороны равны, но углы не прямые, как у квадрата, который наклонили.
+                </script>
+            </section>
+
+            <section data-markdown data-menu-title="Квадрат">
+    <script type="text/template">
+            ### Квадрат
+
+            ![Квадрат](image/square.png)
+
+            Четыре равные стороны, четыре прямых угла.
+    </script>
+</section>
+
+            <section data-markdown data-menu-title="Периметр квадрата">
+    <script type="text/template">
+            ### Периметр квадрата
+
+            P = 4 · a
+
+            - **Дано**: Сторона квадрата a = 7 см
+            - **Расчет**: P = 4 · 7 = 28
+            - **Ответ**: 28 см
+                </script>
+            </section>
+            <section data-markdown data-menu-title="Площадь квадрата">
+    <script type="text/template">
+            ### Площадь квадрата
+
+            S = a²
+
+            - **Дано**: Сторона квадрата a = 6 см
+            - **Расчет**: S = 6² = 36
+            - **Ответ**: 36 см²
+                </script>
+            </section>
+<section data-menu-title="JS: Площадь квадрата">
+    <h3>Площадь квадрата</h3>
+    <img src="image/square.png" width="150">
+    <p>Сторона a: <input type="number" id="sqSide" placeholder="см"></p>
+    <button onclick="squareArea()">Считать</button>
+    <p id="sqOut"></p>
+
+    <script>
+        function squareArea() {
+            let a = parseFloat(document.getElementById('sqSide').value);
+            if (isNaN(a) || a <= 0) {
+                document.getElementById('sqOut').innerHTML = '❌ Сторона должна быть положительной';
+                return;
+            }
+            let s = a * a;
+            document.getElementById('sqOut').innerHTML = 'Площадь квадрата: ' + s + ' см²';
+        }
+    </script>
+</section>
+            <section data-markdown data-menu-title="Треугольник">
+    <script type="text/template">
+            ### Треугольник
+
+            ![Треугольник](image/triangle.png)
+
+            Три стороны, три угла. Сумма углов = 180°.
+    </script>
+</section>
+
+            <section data-markdown data-menu-title="Периметр треугольника">
+    <script type="text/template">
+            ### Периметр треугольника
+
+            P = a + b + c
+
+            - **Дано**: Стороны a = 5 см, b = 6 см, c = 8 см
+            - **Расчет**: P = 5 + 6 + 8 = 19
+            - **Ответ**: 19 см
+    </script>
+</section>
+<section data-markdown data-menu-title="Площадь треугольника">
+    <script type="text/template">
+            ### Площадь треугольника
+
+            S = (a · h) / 2
+
+            - **Дано**: Основание a = 10 см, высота h = 5 см
+            - **Расчет**: S = (10 · 5) / 2 = 25
+            - **Ответ**: 25 см²
+                </script>
+            </section>
+<section data-menu-title="JS: Площадь треугольника (осн/выс)">
+    <h3>Площадь треугольника (основание и высота)</h3>
+    <img src="image/triangle.png" width="150">
+    <p>Основание a: <input type="number" id="triBase" placeholder="см"></p>
+    <p>Высота h: <input type="number" id="triHeight" placeholder="см"></p>
+    <button onclick="triangleArea()">Считать</button>
+    <p id="triOut"></p>
+
+    <script>
+        function triangleArea() {
+            let a = parseFloat(document.getElementById('triBase').value);
+            let h = parseFloat(document.getElementById('triHeight').value);
+            if (isNaN(a) || isNaN(h) || a <= 0 || h <= 0) {
+                document.getElementById('triOut').innerHTML = '❌ Введите положительные числа';
+                return;
+            }
+            let s = 0.5 * a * h;
+            document.getElementById('triOut').innerHTML = 'Площадь треугольника: ' + s + ' см²';
+        }
+    </script>
+</section>
+            <section data-markdown data-menu-title="Параллелограмм">
+    <script type="text/template">
+            ### Параллелограмм
+
+            ![Параллелограмм](image/parallelogram.png)
+
+            Противоположные стороны параллельны и равны.
+    </script>
+</section>
+
+            <section data-markdown data-menu-title="Периметр параллелограмма">
+    <script type="text/template">
+            ### Периметр параллелограмма
+
+            P = 2 · (a + b)
+
+            - **Дано**: Стороны a = 6 см, b = 4 см
+            - **Расчет**: P = 2 · (6 + 4) = 20
+            - **Ответ**: 20 см
+    </script>
+</section>
+<section data-markdown data-menu-title="Площадь параллелограмма">
+    <script type="text/template">
+            ### Площадь параллелограмма
+
+            S = a · h
+
+            - **Дано**: Основание a = 7 см, высота h = 4 см
+            - **Расчет**: S = 7 · 4 = 28
+            - **Ответ**: 28 см²
+                </script>
+            </section>
+            <section data-menu-title="JS: Площадь параллелограмма">
+    <h3>Площадь параллелограмма</h3>
+    <img src="image/parallelogram.png" width="150">
+    <p>Основание a: <input type="number" id="parBase" placeholder="см"></p>
+    <p>Высота h: <input type="number" id="parHeight" placeholder="см"></p>
+    <button onclick="parallelogramArea()">Считать</button>
+    <p id="parOut"></p>
+
+    <script>
+        function parallelogramArea() {
+            let a = parseFloat(document.getElementById('parBase').value);
+            let h = parseFloat(document.getElementById('parHeight').value);
+            if (isNaN(a) || isNaN(h) || a <= 0 || h <= 0) {
+                document.getElementById('parOut').innerHTML = '❌ Нужны положительные числа';
+                return;
+            }
+            let s = a * h;
+            document.getElementById('parOut').innerHTML = 'Площадь параллелограмма: ' + s + ' см²';
+        }
+    </script>
+</section>
+            <section data-markdown data-menu-title="Трапеция">
+    <script type="text/template">
+            ### Трапеция
+
+            ![Трапеция](image/trapezoid.png)
+
+            Две стороны параллельны (основания), две другие — нет.
+    </script>
+</section>
+
+            <section data-markdown data-menu-title="Периметр трапеции">
+    <script type="text/template">
+            ### Периметр трапеции
+
+            P = a + b + c + d
+
+            - **Дано**: Стороны a = 5 см, b = 7 см, c = 3 см, d = 4 см
+            - **Расчет**: P = 5 + 7 + 3 + 4 = 19
+            - **Ответ**: 19 см
+    </script>
+</section>
+<section data-markdown data-menu-title="Площадь трапеции">
+    <script type="text/template">
+            ### Площадь трапеции
+
+            S = (a + b) / 2 · h
+
+            - **Дано**: Основания a = 4 см, b = 8 см, высота h = 5 см
+            - **Расчет**: S = (4 + 8) / 2 · 5 = 30
+            - **Ответ**: 30 см²
+                </script>
+            </section>
+            <section data-menu-title="JS: Площадь трапеции">
+    <h3>Площадь трапеции</h3>
+    <img src="image/trapezoid.png" width="150">
+    <p>Основание a: <input type="number" id="trapA" placeholder="см"></p>
+    <p>Основание b: <input type="number" id="trapB" placeholder="см"></p>
+    <p>Высота h: <input type="number" id="trapH" placeholder="см"></p>
+    <button onclick="trapezoidArea()">Считать</button>
+    <p id="trapOut"></p>
+
+    <script>
+        function trapezoidArea() {
+            let a = parseFloat(document.getElementById('trapA').value);
+            let b = parseFloat(document.getElementById('trapB').value);
+            let h = parseFloat(document.getElementById('trapH').value);
+            if (isNaN(a) || isNaN(b) || isNaN(h) || a <= 0 || b <= 0 || h <= 0) {
+                document.getElementById('trapOut').innerHTML = '❌ Все числа должны быть больше нуля';
+                return;
+            }
+            let s = 0.5 * (a + b) * h;
+            document.getElementById('trapOut').innerHTML = 'Площадь трапеции: ' + s + ' см²';
+        }
+    </script>
+</section>
+            <section data-markdown data-menu-title="Ромб">
+    <script type="text/template">
+            ### Ромб
+
+            ![Ромб](image/rhombus.png)
+
+            Все стороны равны, углы не прямые.
+    </script>
+</section>
+
+            <section data-markdown data-menu-title="Периметр ромба">
+    <script type="text/template">
+            ### Периметр ромба
+
+            P = 4 · a
+
+            - **Дано**: Сторона ромба a = 9 см
+            - **Расчет**: P = 4 · 9 = 36
+            - **Ответ**: 36 см
+    </script>
+</section>
+<section data-markdown data-menu-title="Площадь ромба">
+    <script type="text/template">
+            ### Площадь ромба
+
+            S = (d₁ · d₂) / 2
+
+            - **Дано**: Диагонали d₁ = 10 см, d₂ = 8 см
+            - **Расчет**: S = (10 · 8) / 2 = 40
+            - **Ответ**: 40 см²
+                </script>
+            </section>
+            <section data-menu-title="JS: Площадь ромба (диагонали)">
+    <h3>Площадь ромба через диагонали</h3>
+    <img src="image/rhombus.png" width="150">
+    <p>Диагональ d₁: <input type="number" id="rhomD1" placeholder="см"></p>
+    <p>Диагональ d₂: <input type="number" id="rhomD2" placeholder="см"></p>
+    <button onclick="rhombusArea()">Считать</button>
+    <p id="rhomOut"></p>
+
+    <script>
+        function rhombusArea() {
+            let d1 = parseFloat(document.getElementById('rhomD1').value);
+            let d2 = parseFloat(document.getElementById('rhomD2').value);
+            if (isNaN(d1) || isNaN(d2) || d1 <= 0 || d2 <= 0) {
+                document.getElementById('rhomOut').innerHTML = '❌ Диагонали должны быть больше нуля';
+                return;
+            }
+            let s = (d1 * d2) / 2;
+            document.getElementById('rhomOut').innerHTML = 'Площадь ромба: ' + s + ' см²';
+        }
+    </script>
+</section>
+            <section data-markdown data-menu-title="Круг">
+    <script type="text/template">
+            ### Круг
+
+            ![Круг](image/circle.png)
+
+            Все точки на одинаковом расстоянии от центра.
+    </script>
+</section>
+
+            <section data-markdown data-menu-title="Длина окружности">
+    <script type="text/template">
+            ### Длина окружности (периметр круга)
+
+            P = 2 · π · R
+
+            - **Дано**: Радиус R = 5 см, π ≈ 3,14
+            - **Расчет**: P = 2 · 3,14 · 5 = 31,4
+            - **Ответ**: 31,4 см
+    </script>
+</section>
+<section data-markdown data-menu-title="Площадь круга">
+    <script type="text/template">
+            ### Площадь круга
+
+            S = π · R²
+
+            - **Дано**: Радиус R = 4 см, π ≈ 3,14
+            - **Расчет**: S = 3,14 · 16 = 50,24
+            - **Ответ**: 50,24 см²
+                </script>
+            </section>
+            <section data-menu-title="JS: Площадь круга">
+    <h3>Площадь круга (через радиус)</h3>
+    <img src="image/circle.png" width="150">
+    <p>Радиус R: <input type="number" id="circleRad" placeholder="см"></p>
+    <button onclick="circleArea()">Считать</button>
+    <p id="circleOut"></p>
+
+    <script>
+        function circleArea() {
+            let r = parseFloat(document.getElementById('circleRad').value);
+            if (isNaN(r) || r <= 0) {
+                document.getElementById('circleOut').innerHTML = '❌ Радиус должен быть больше нуля';
+                return;
+            }
+            let s = 3.1416 * r * r;
+            document.getElementById('circleOut').innerHTML = 'Площадь круга: ' + s.toFixed(2) + ' см²';
+        }
+    </script>
+</section>
+            <section data-menu-title="Раздел: Исходный код" class="section-divider">
+                <div class="divider-content">
+                    <p class="section-chip">Раздел 3</p>
+                    <h2>Исходный код программ</h2>
+                    <p>Фрагменты JavaScript из файла приложения</p>
+                </div>
+            </section>
+
+            <section data-menu-title="Фрагмент Площадь">
+    <h3>Фрагмент Площадь</h3>
+    <pre style="font-size: 0.4em; text-align: left; background: #1e1e1e; padding: 15px; border-radius: 10px;">
+<code>
+            ФРАГМЕНТ ПЛОЩАДЬ
+
+            function roundValue(value) {
+                return Math.round(value * 100) / 100;
+            }
+
+            function areaSquare(a) {
+                if (a <= 0) return null;
+                return a * a;
+            }
+
+            function areaSquareByDiagonal(d) {
+                if (d <= 0) return null;
+                return (d * d) / 2;
+            }
+
+            function areaTriangleBaseHeight(a, h) {
+                if (a <= 0 || h <= 0) return null;
+                return (a * h) / 2;
+            }
+
+            function areaTriangleTwoSidesAngle(a, b, sinGamma) {
+                if (a <= 0 || b <= 0 || sinGamma <= 0) return null;
+                return 0.5 * a * b * sinGamma;
+            }
+
+            function areaTriangleHeron(a, b, c) {
+                if (a <= 0 || b <= 0 || c <= 0) return null;
+                if (a + b <= c || a + c <= b || b + c <= a) return null;
+                let p = (a + b + c) / 2;
+                return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+            }
+
+            function areaParallelogramBaseHeight(a, h) {
+                if (a <= 0 || h <= 0) return null;
+                return a * h;
+            }
+
+            function areaParallelogramSidesAngle(a, b, sinAlpha) {
+                if (a <= 0 || b <= 0 || sinAlpha <= 0) return null;
+                return a * b * sinAlpha;
+            }
+
+            function areaTrapezoidBasesHeight(a, b, h) {
+                if (a <= 0 || b <= 0 || h <= 0) return null;
+                return ((a + b) / 2) * h;
+            }
+
+            function areaTrapezoidMidlineHeight(m, h) {
+                if (m <= 0 || h <= 0) return null;
+                return m * h;
+            }
+
+            function areaRhombusSideHeight(a, h) {
+                if (a <= 0 || h <= 0) return null;
+                return a * h;
+            }
+
+            function areaRhombusSideAngle(a, sinAlpha) {
+                if (a <= 0 || sinAlpha <= 0) return null;
+                return a * a * sinAlpha;
+            }
+
+            function areaRhombusDiagonals(d1, d2) {
+                if (d1 <= 0 || d2 <= 0) return null;
+                return (d1 * d2) / 2;
+            }
+
+            function areaCircleRadius(r) {
+                if (r <= 0) return null;
+                return Math.PI * r * r;
+            }
+
+            function areaCirclePerimeter(p) {
+                if (p <= 0) return null;
+                return (p * p) / (4 * Math.PI);
+            }
+            </code>
+                </pre>
+            </section>
+
+            <section data-menu-title="Фрагмент Периметр">
+    <h3>Фрагмент Периметр</h3>
+    <pre style="font-size: 0.4em; text-align: left; background: #1e1e1e; padding: 15px; border-radius: 10px;">
+<code>
+            ФРАГМЕНТ ПЕРИМЕТР
+
+            function roundValue(value) {
+                return Math.round(value * 100) / 100;
+            }
+
+            function perimeterSquare(a) {
+                if (a <= 0) return null;
+                return 4 * a;
+            }
+
+            function perimeterRhombus(a) {
+                if (a <= 0) return null;
+                return 4 * a;
+            }
+
+            function perimeterTriangle(a, b, c) {
+                if (a <= 0 || b <= 0 || c <= 0) return null;
+                if (a + b <= c || a + c <= b || b + c <= a) return null;
+                return a + b + c;
+            }
+
+            function perimeterParallelogram(a, b) {
+                if (a <= 0 || b <= 0) return null;
+                return 2 * (a + b);
+            }
+
+            function perimeterTrapezoid(a, b, c, d) {
+                if (a <= 0 || b <= 0 || c <= 0 || d <= 0) return null;
+                return a + b + c + d;
+            }
+
+            function perimeterCircle(r) {
+                if (r <= 0) return null;
+                return 2 * Math.PI * r;
+            }
+            </code>
+                </pre>
+            </section>
+
+            <section data-menu-title="Раздел: Иллюстрации" class="section-divider">
+                <div class="divider-content">
+                    <p class="section-chip">Раздел 4</p>
+                    <h2>Иллюстрации по теме</h2>
+                    <p>Фигуры</p>
+                </div>
+            </section>
+
+            <section data-background-image="image/mem1.jpg" data-background-size="cover" data-menu-title="Иллюстрация 1">
+            </section>
+
+            <section data-background-image="image/mem2.jpg" data-background-size="cover" data-menu-title="Иллюстрация 2">
+            </section>
+
+            <section data-background-image="image/mem3.jpg" data-background-size="cover" data-menu-title="Иллюстрация 3">
+            </section>
+
+            <section data-markdown data-menu-title="Заключение" class="outro-slide">
+                <script type="text/template">
+                    ## Спасибо за внимание
+
+                    
+                </script>
+            </section>
+        </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        Reveal.initialize({
+            history: true,
+            controls: true,
+            slideNumber: true,
+            center: false,
+            transition: 'slide',
+            menu: {
+                numbers: true,
+                markers: true,
+                titleSelector: 'h1, h2, h3',
+                hideMissingTitles: false,
+                themes: false,
+                transitions: false,
+                openButton: true,
+                keyboard: true
+            },
+            dependencies: [
+                { src: 'plugin/markdown/marked.js' },
+                { src: 'plugin/markdown/markdown.js' },
+                { src: 'plugin/notes/notes.js', async: true },
+                {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        if (window.hljs) {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                },
+                { src: 'plugin/menu/menu.js', async: true }
+            ]
+        });
+    </script>
+</body>
+</html>
